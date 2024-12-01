@@ -1,14 +1,24 @@
 package utils
-
-case class CryptoData(currency: String, price: Double, timestamp: Long)
+import Dto.CryptoData
 
 object DataParser {
+  def process(data: CryptoData): CryptoData = {
+    // Add any necessary processing logic here
+    // For example, data validation, transformation, or enrichment
+    CryptoData(
+      timestamp = data.timestamp,
+      currency = data.currency.toUpperCase, // Normalize currency to uppercase
+      rate = data.rate
+      // Add any additional fields or transformations needed
+    )
+  }
+
   def parse(rawMessage: String): CryptoData = {
     try {
       val parts = rawMessage.split(",")
       CryptoData(
         currency = parts(0).trim,
-        price = parts(1).toDouble,
+        rate = parts(1).toDouble,
         timestamp = parts(2).toLong
       )
     } catch {

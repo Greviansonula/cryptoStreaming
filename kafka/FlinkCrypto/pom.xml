@@ -51,14 +51,7 @@ under the License.
 		<log4j.version>2.17.1</log4j.version>
 	</properties>
 
-
 	<dependencies>
-		<dependency>
-			<groupId>org.elasticsearch.client</groupId>
-			<artifactId>elasticsearch-rest-client</artifactId>
-			<version>7.17.0</version>
-			<scope>compile</scope>
-		</dependency>
 		<!-- Apache Flink dependencies -->
 		<!-- These dependencies are provided, because they should not be packaged into the JAR file. -->
 		<dependency>
@@ -84,39 +77,14 @@ under the License.
 
 		<!-- Add connector dependencies here. They must be in the default scope (compile). -->
 
-		<!-- Example: -->
+		<!-- Example:
 
-<!--		<dependency>-->
-<!--			<groupId>org.apache.flink</groupId>-->
-<!--			<artifactId>flink-connector-kafka</artifactId>-->
-<!--			<version>${flink.version}</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.apache.flink</groupId>-->
-<!--			<artifactId>flink-connector-kafka</artifactId>-->
-<!--			<version>1.18.1</version> &lt;!&ndash; Use your Flink version &ndash;&gt;-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>org.apache.flink</groupId>
 			<artifactId>flink-connector-kafka</artifactId>
-			<version>3.0.1-1.18</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-sql-connector-elasticsearch7</artifactId>
-			<version>3.0.1-1.17</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.bahir</groupId>
-			<artifactId>flink-connector-influxdb_2.12</artifactId>
-			<version>1.1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-connector-elasticsearch7</artifactId>
 			<version>${flink.version}</version>
 		</dependency>
+		-->
 
 		<!-- Add logging framework, to produce console output when running in the IDE. -->
 		<!-- These dependencies are excluded from the application JAR by default. -->
@@ -147,7 +115,7 @@ under the License.
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.1.1</version>
+				<version>3.3.3</version>
 				<executions>
 					<!-- Run shade goal on package phase -->
 					<execution>

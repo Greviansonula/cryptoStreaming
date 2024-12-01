@@ -9,7 +9,7 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
     healthcheck:
-      test: [ "CMD", "bash", "-c", "echo 'ruok' | nc localhost 2181" ]
+      test: ["CMD", "bash", "-c", "echo 'ruok' | nc localhost 2181"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -38,29 +38,46 @@ services:
       KAFKA_JMX_PORT: 9101
       KAFKA_JMX_HOSTNAME: localhost
     healthcheck:
-      test: [ "CMD", "bash", "-c", 'nc -z localhost 9092' ]
+      test: ["CMD", "bash", "-c", "nc -z localhost 9092"]
       interval: 10s
       timeout: 5s
       retries: 5
 
   postgres:
     image: postgres
+    container_name: postgres
     environment:
       POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: admin
       POSTGRES_DB: crypto_db
     ports:
       - "5432:5432"
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    container_name: es-container
     environment:
-      discovery.type: single-node
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
     ports:
       - "9200:9200"
+    # volumes:
+    #   - es_data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:9200/_cluster/health | grep -q '\"status\":\"(green|yellow)\"'"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
 
   kibana:
+    container_name: kb-container
     image: docker.elastic.co/kibana/kibana:7.17.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es-container:9200
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
     ports:
       - "5601:5601"
 
@@ -69,12 +86,13 @@ services:
     container_name: influxdb
     ports:
       - "8086:8086"
-    volumes:
-      - influxdb_data:/var/lib/influxdb
+    # volumes:
+    #   - influxdb_data:/var/lib/influxdb
     environment:
       - INFLUXDB_ADMIN_USER=admin
-      - INFLUXDB_ADMIN_PASSWORD=password
+      - INFLUXDB_ADMIN_PASSWORD=admin
       - INFLUXDB_DB=crypto_pipeline
+
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
@@ -82,36 +100,44 @@ services:
       - "3000:3000"
     environment:
       - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=password
+      - GF_SECURITY_ADMIN_PASSWORD=admin
     depends_on:
       - influxdb
 
   jupyter:
     image: jupyter/base-notebook
+    container_name: jupyter
     ports:
       - "8888:8888"
     volumes:
       - ./notebooks:/home/jovyan/work
     environment:
-      JUPYTER_ENABLE_LAB: "yes"
+      - JUPYTER_ENABLE_LAB=yes
 
-  jobmanager:
-    image: flink:latest
-    container_name: flink_jobmanager
-    ports:
-      - "8081:8081"
-    environment:
-      - JOB_MANAGER_RPC_ADDRESS=jobmanager
-    command: jobmanager
-  
-  taskmanager:
-    image: flink:latest
-    container_name: flink_taskmanager
-    depends_on:
-      - jobmanager
-    environment:
-      - JOB_MANAGER_RPC_ADDRESS=jobmanager
-    command: taskmanager
+  # jobmanager:
+  #   image: flink:1.18.1
+  #   container_name: flink_jobmanager
+  #   ports:
+  #     - "8081:8081"
+  #   environment:
+  #     - |
+  #       FLINK_PROPERTIES=
+  #       jobmanager.rpc.address: jobmanager 
+  #   command: jobmanager
 
-volumes:
-  influxdb_data:
+  # taskmanager:
+  #   image: flink:1.18.1
+  #   container_name: flink_taskmanager
+  #   depends_on:
+  #     jobmanager:
+  #       condition: service_started
+  #   environment:
+  #     - | 
+  #       FLINK_PROPERTIES=
+  #       jobmanager.rpc.address: jobmanager
+  #       taskmanager.numberOfTaskSlots: 2  
+  #   command: taskmanager
+
+# volumes:
+#   es_data:
+#   influxdb_data:

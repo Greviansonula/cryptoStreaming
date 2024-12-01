@@ -1,4 +1,5 @@
 package utils
+import Dto.CryptoData
 
 object DataReducer {
 
@@ -6,7 +7,7 @@ object DataReducer {
     // Example: Average the prices during the window
     CryptoData(
       currency = data1.currency,
-      price = (data1.price + data2.price) / 2,
+      rate = (data1.rate + data2.rate) / 2,
       timestamp = Math.max(data1.timestamp, data2.timestamp)
     )
   }
