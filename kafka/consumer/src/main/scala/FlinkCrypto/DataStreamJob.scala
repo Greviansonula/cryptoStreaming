@@ -25,6 +25,10 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ObjectNode
 import scala.collection.JavaConverters._
 import org.slf4j.LoggerFactory
+import org.apache.flink.api.common.typeinfo.TypeInformation
+import utils.InfluxDBSink
+
+
 
 
 object DataStreamJob {
@@ -41,6 +45,10 @@ object DataStreamJob {
 
     val kafkaSourceTopic = "crypto_exchange_rates"
     val kafkaBootstrapServers = "localhost:9092"
+
+    // Provide TypeInformation for CryptoData
+    implicit val cryptoDataTypeInfo: TypeInformation[CryptoData] =
+      TypeInformation.of(classOf[CryptoData])
 
     val kafkaSource: KafkaSource[CryptoData] = KafkaSource.builder[CryptoData]
       .setBootstrapServers(kafkaBootstrapServers)
@@ -66,6 +74,19 @@ object DataStreamJob {
 
         // Sink: Print to console (or send to other sinks like a database)
 //        parsedStream.print()
+
+    // Sink: Write to InfluxDB
+    val influxDbUrl = "http://localhost:8086"
+    val token: String = "ChJENYnBK5dxMWhWJpbcUGBFtlAvTWJHEJJa6Eo-U3LIhddWPkjtnev5JbE7N4ccLJOeXdZ-JXUVNpIqQozQnA=="
+    val org = "crypto.org"
+    val bucket = "crypto-data"
+
+    // Sink
+    parsedStream.addSink(new InfluxDBSink(influxDbUrl, token, org, bucket)).name("InfluxDB Sink")
+
+
+
+
     // Configure Elasticsearch sink
     val httpHosts = new HttpHost("localhost", 9200, "http")
 
@@ -76,7 +97,7 @@ object DataStreamJob {
       .setBulkFlushInterval(1000)
 
     //Add Elasticsearch sink to the stream
-    parsedStream.sinkTo(esSinkBuilder.build())
+    parsedStream.sinkTo(esSinkBuilder.build()).name("Elasticsearch Sink")
 
 
 
@@ -146,10 +167,7 @@ object DataStreamJob {
           // Log the error
           throw new RuntimeException(s"Failed to emit crypto data: ${element}", e)
       }
-
-
     }
-
     override def open(): Unit = {}
     override def close(): Unit = {}
   }

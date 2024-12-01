@@ -7,15 +7,7 @@
     <list default="true" id="e5588813-660d-40b1-b077-5718380ef3c1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Deserializer/CryptoDataDeserializer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Deserializer/CryptoDataDeserializer.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Dto/CryptoData.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Dto/CryptoData.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/FlinkCrypto/DataStreamJob.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/FlinkCrypto/DataStreamJob.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/utils/DataParser.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/utils/DataParser.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/utils/DataReducer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/utils/DataReducer.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../producer/crypto_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../producer/crypto_producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../output.txt/2" beforeDir="false" afterPath="$PROJECT_DIR$/../../output.txt/2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../output.txt/3" beforeDir="false" afterPath="$PROJECT_DIR$/../../output.txt/3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../submit_job.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../../submit_job.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +28,9 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -49,6 +44,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.DataStreamJob.executor&quot;: &quot;Debug&quot;,
     &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -59,7 +55,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -112,7 +108,10 @@
       <workItem from="1732985487670" duration="11301000" />
       <workItem from="1733029253601" duration="16698000" />
       <workItem from="1733053921373" duration="2687000" />
-      <workItem from="1733059001075" duration="4864000" />
+      <workItem from="1733059001075" duration="9301000" />
+      <workItem from="1733070474688" duration="154000" />
+      <workItem from="1733070630431" duration="6688000" />
+      <workItem from="1733084442551" duration="2732000" />
     </task>
     <servers />
   </component>

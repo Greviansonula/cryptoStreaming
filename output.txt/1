@@ -1,0 +1,5 @@
+influx config create --config-name crypto-data \
+    --host-url "http://localhost:8086" \
+    --org "crypto.org" \
+    --token "ChJENYnBK5dxMWhWJpbcUGBFtlAvTWJHEJJa6Eo-U3LIhddWPkjtnev5JbE7N4ccLJOeXdZ-JXUVNpIqQozQnA==" \
+    --active

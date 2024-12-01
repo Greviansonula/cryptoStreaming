@@ -17,3 +17,16 @@ This project tracks cryptocurrency price trends and analyzes live trading activi
 ## Architecture Diagram
 ![Architecture Diagram](docs/architecture_diagram.jpg)
 
+
+## Flink Job
+![Flink Job](docs/flink-job.png)
+
+## Kibana Dev
+![Kibana Dev](docs/kibana-dev.png)
+
+## Kibana Dashboard
+![Kibana Dashboard](docs/kibana-dash.png)
+
+## influxDB
+![influxDB](docs/influxDB.png)
+
