@@ -43,6 +43,7 @@ fi
 # Stop the Flink cluster (if running)
 echo "Stopping any running Flink cluster..."
 $FLINK_DIR/bin/stop-cluster.sh
+sleep 5
 
 # Start the Flink cluster
 echo "Starting Flink cluster..."

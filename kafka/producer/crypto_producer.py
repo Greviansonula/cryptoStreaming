@@ -5,14 +5,17 @@ from datetime import datetime
 import time
 
 
-def get_crypto_prices():
-    url = 'https://api.coinbase.com/v2/exchange-rates?currency=BTC'
+def get_crypto_prices(base_currency = "USD"):
+    url = 'https://api.coinbase.com/v2/exchange-rates?currency=USD'
     response = requests.get(url)
-    ex_rates = json.loads(response.text)
-    # return ex_rates["data"]
+    data = json.loads(response.text)
+    popular_cryptos = ["BTC", "ETH", "LTC"]
+    all_rates = data.get("data", {}).get("rates", {})
+    ex_rates = {crypto: all_rates[crypto] for crypto in popular_cryptos if crypto in all_rates}
+
     return {
-    "currency": "BTC",
-    "rate": 49000.5
+    "currency": base_currency,
+    "rates": ex_rates
 }
 
 def delivery_report(err, msg):
@@ -56,7 +59,7 @@ def main():
             producer.poll(0)
 
             # wait for 5 seconds
-            # time.sleep(3)
+            time.sleep(5)
         except BufferError:
             print("Buffer full! Waiting...")
             time.sleep(1)

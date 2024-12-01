@@ -23,10 +23,14 @@ import java.time.format.DateTimeFormatter
 import java.time.ZoneOffset
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ObjectNode
+import scala.collection.JavaConverters._
+import org.slf4j.LoggerFactory
+
 
 object DataStreamJob {
   // Set up the logger using SLF4J
   val LOG = LoggerFactory.getLogger(DataStreamJob.getClass)
+  private val logger = LoggerFactory.getLogger(this.getClass)
   LOG.error("Picked picked")
 
   def main(args: Array[String]): Unit = {
@@ -101,7 +105,7 @@ object DataStreamJob {
       element != null &&
         element.currency != null &&
         element.currency.nonEmpty &&
-        element.rate > 0 &&
+        element.rates != null &&
         element.timestamp > 0
     }
 
@@ -113,15 +117,22 @@ object DataStreamJob {
         }
         val documentId = UUID.randomUUID().toString
 
-        //      val formattedTimestamp = element.timestamp match {
-        //        case ts: Long => java.time.Instant.ofEpochMilli(ts).atOffset(ZoneOffset.UTC).format(dateFormatter)
-        //        case _ => java.time.Instant.now().atOffset(ZoneOffset.UTC).format(dateFormatter)
-        //      }
+       // Convert rates to Double
+        val numericRates = element.rates.map { case (key, value) =>
+          key -> value.toDouble
+        }
+
+        val objectMapper = new ObjectMapper()
+        val parentNode: ObjectNode = objectMapper.createObjectNode()
+        val ratesNode: ObjectNode = objectMapper.valueToTree(numericRates.asJava)
+
+        LOG.info(s"[+] RATES: ${ratesNode}")
+        logger.info(s"[+] RATES: ${ratesNode}")
 
         // Create JSON using Jackson
         val jsonNode = mapper.createObjectNode()
         jsonNode.put("currency", element.currency)
-        jsonNode.put("price", element.rate)
+        jsonNode.set("rates", ratesNode)
         jsonNode.put("timestamp", formatTimestamp((element.timestamp)))
 
         val request = Requests.indexRequest()

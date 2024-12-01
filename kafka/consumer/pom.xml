@@ -84,18 +84,15 @@ under the License.
 
 		<!-- Add connector dependencies here. They must be in the default scope (compile). -->
 
-		<!-- Example: -->
-
 <!--		<dependency>-->
-<!--			<groupId>org.apache.flink</groupId>-->
-<!--			<artifactId>flink-connector-kafka</artifactId>-->
-<!--			<version>${flink.version}</version>-->
+<!--			<groupId>org.apache.logging.log4j</groupId>-->
+<!--			<artifactId>log4j-core</artifactId>-->
+<!--			<version>2.24.2</version>-->
 <!--		</dependency>-->
-
 <!--		<dependency>-->
-<!--			<groupId>org.apache.flink</groupId>-->
-<!--			<artifactId>flink-connector-kafka</artifactId>-->
-<!--			<version>1.18.1</version> &lt;!&ndash; Use your Flink version &ndash;&gt;-->
+<!--			<groupId>org.slf4j</groupId>-->
+<!--			<artifactId>slf4j-api</artifactId>-->
+<!--			<version>2.24.2</version> &lt;!&ndash; Replace with a suitable version &ndash;&gt;-->
 <!--		</dependency>-->
 		<dependency>
 			<groupId>org.apache.flink</groupId>

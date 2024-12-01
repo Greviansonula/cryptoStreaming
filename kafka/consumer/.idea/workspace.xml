@@ -5,23 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5588813-660d-40b1-b077-5718380ef3c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../FlinkCrypto/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlinkCrypto/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlinkCrypto/src/main/resources/log4j2.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FlinkCrypto/src/main/scala/FlinkCrypto/DataStreamJob.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../FlinkCrypto/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FlinkCrypto/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FlinkCrypto/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FlinkCrypto/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Deserializer/CryptoDataDeserializer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Deserializer/CryptoDataDeserializer.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Dto/CryptoData.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Dto/CryptoData.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/FlinkCrypto/DataStreamJob.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/FlinkCrypto/DataStreamJob.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/utils/DataParser.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/utils/DataParser.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/utils/DataReducer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/utils/DataReducer.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../producer/crypto_producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../producer/crypto_producer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../output.txt/2" beforeDir="false" afterPath="$PROJECT_DIR$/../../output.txt/2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../output.txt/3" beforeDir="false" afterPath="$PROJECT_DIR$/../../output.txt/3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../submit_job.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../../submit_job.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +110,9 @@
       <workItem from="1732978732517" duration="3848000" />
       <workItem from="1732985226149" duration="108000" />
       <workItem from="1732985487670" duration="11301000" />
-      <workItem from="1733029253601" duration="10520000" />
+      <workItem from="1733029253601" duration="16698000" />
+      <workItem from="1733053921373" duration="2687000" />
+      <workItem from="1733059001075" duration="4864000" />
     </task>
     <servers />
   </component>
